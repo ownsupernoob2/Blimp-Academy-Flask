@@ -1,0 +1,6 @@
+
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+*.xml
+.models/_pycache_/*.pyc
+*.pyc
