@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+    <div class="row">
+        <div class="col-md-8">
+             <div class="tray-container"></div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="feedback"></div>
+            {%  include "circuit.html" %}
+        </div>
+        <div class="col-md-3"><img class="bloch-image bloch_sphere_style"></div>
+    </div>
+

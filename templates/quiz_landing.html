@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz_landing.js') }}"></script>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="text-group">
+            <h1>{{ data.title }}</h1>
+            <p>{{ data.description }}</p>
+        </div>
+        <div class="media-group">
+            <img class="bloch_sphere_style" src="/{{ data.bloch_sphere }}">
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    {% with next_name = data.next_name, next_page=data.next_page, prev_page=data.prev_page, prev_name=data.prev_name %}
+        {%  include "navigation_button.html" %}
+    {% endwith %}
+    </div>
+</div>
+{% endblock %}
+

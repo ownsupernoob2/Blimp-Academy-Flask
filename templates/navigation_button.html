@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!-- <div class="row">
+        <br>
+        {% if prev_page is not none %}
+            <div><button id="prev-button" onclick="location.href='{{prev_page}}'" class="btn nav-btn page_button_style">{{prev_name}}</button></div>
+        {% endif %}
+        <div><button id="quiz-next-button" onclick="location.href='{{next_page}}'" class="btn nav-btn quiz-next-button page_button_style">{{next_name}}</button></div>
+</div> -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% if prev_page is not none %}
+                
+                    <button id="prev-button" onclick="location.href='{{prev_page}}'" class="btn nav-btn page_button_style float-left">{{prev_name}}</button>
+                
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <button id="quiz-next-button" onclick="location.href='{{next_page}}'" class="btn nav-btn quiz-next-button page_button_style float-right">{{next_name}}</button>
+            </div>
+        </div>
+    </div>
+</footer>

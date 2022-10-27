@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'learn.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        console.log("yoyoo")
+        console.log({{learn_data | tojson}})
+        setup_page_bloch({{learn_data | tojson}})
+        {#setup_page({{learn_data | tojson}})#}
+    })
+</script>
+
+<progress class="progress" max="1" value="{{ learn_data.progression }}"></progress>
+<div class="row">
+        <div class="col-md-10">
+            <div class="text-group">
+                <h1>{{ learn_data.title }}</h1>
+                <br>
+                {% if learn_data.text is string %}
+                <p>{{ learn_data.text | safe }}</p>
+                {% else %}
+                {% for t in learn_data.text %}
+                <p>{{ t | safe }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="media-group">
+            <div class="row">
+                {% for img in learn_data.media %}
+                <div class="col-md-4">
+                <figure>
+                  <img class="bloch_sphere_style" src="{{ url_for('home') + img.bloch_sphere }}">
+                  <figcaption>{{ img.caption }}</figcaption>
+                </figure>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-8">
+    
+    </div>
+</div>
+
+{% endblock %}
+{% with next_name = learn_data.next_name, next_page=learn_data.next_page, prev_name=learn_data.prev_name, prev_page=learn_data.prev_page %}
+    {%  include "navigation_button.html" %}
+{% endwith %}
+

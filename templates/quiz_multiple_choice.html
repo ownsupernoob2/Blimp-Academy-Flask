@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz_multiple_choice.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        console.log({{quiz_data | tojson}})
+        setup_page_multiple_choice_quiz({{quiz_data | tojson}})
+    })
+</script>
+
+    
+<progress class="progress" max="1" value="{{ quiz_data.progression }}"></progress>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-group text-center">
+            <h1>{{ quiz_data.name }}</h1>
+        </div>
+
+        <div class="media-group text-center">
+            {% if quiz_data.name_media %}
+
+                {% if quiz_data.media_type == 'path' %}
+                <img src="/{{ quiz_data.name_media }}" class="bloch_sphere_style">
+                {% else%}
+                {%  include "circuit.html" %}
+                {%  endif %}
+
+            {%  endif %}
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-12">
+            <div class="multiple-choice-quiz-media-group">
+            {% if quiz_data.multiple_choice.answers_type == 'str' %}
+                {% for i, choice in enumerate(quiz_data.multiple_choice.answers_media) %}
+
+                {% if i % 2 == 0 %}
+                <div class="row">
+                    <div class="col-md-2"></div>
+                {% endif %}
+                    <!-- jquery: $('input[name="name_of_your_radiobutton"]:checked').val(); -->
+                    <div class="col-md-4 text-center">
+                        <div class="quiz-choice-div">
+                            <input type="radio" class="radio-button"  id="answer{{i}}" name="answer" value="{{options[i]}}">
+                            <label for="answer{{i}}"> <b>{{options[i]}}</b>: {{ choice }}</label><br>
+                        </div>
+                    </div>
+                {% if i % 2 == 1 %}
+                    <div class="col-md-2"></div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+            {% elif quiz_data.multiple_choice.answers_type == 'path' %}
+
+                {% for i, choice in enumerate(quiz_data.multiple_choice.answers_media) %}
+                {% if i % 2 == 0 %}
+                <div class="row">
+                {% endif %}
+                <!-- jquery: $('input[name="name_of_your_radiobutton"]:checked').val(); -->
+
+                    <div class="col-md-6 text-center">
+                        <div class="quiz-choice-div">
+                            <input type="radio" class="radio-button" id="answer{{i}}" name="answer" value="{{options[i]}}">
+                            <label for="answer{{i}}">
+                                <h4>{{options[i]}}</h4>
+                                <img class="answers-img" src="/{{ choice }}">
+                            </label>
+                        </div>
+                    </div>
+
+                {% if i % 2 == 1 %}
+                </div>
+                {% endif %}
+                {% endfor %}
+
+            {% else %}
+
+            {% for i, choice in enumerate(quiz_data.multiple_choice.answers_media) %}
+            <!-- jquery: $('input[name="name_of_your_radiobutton"]:checked').val(); -->
+            {% if i % 2 == 0 %}
+            <div class="row">
+            {% endif %}
+                <div id="ckt-answers" class="col-md-6">
+                    <div class="quiz-choice-div">
+                        <input type="radio" class="radio-button"  id="gate{{i}}" name="answer" value="{{options[i]}}">
+                        <label class="ckt-choice" for="gate{{i}}">
+                            <h4>{{options[i]}}</h4>
+                            {% with ckt_id = i %}
+                                {%  include "circuit.html" %}
+                            {% endwith %}
+                        </label>
+                    </div>
+                </div>
+
+            {% if i % 2 == 1 %}
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% endif %}
+
+
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+</div>
+
+{# For feedback from the server #}
+{# Keep the submit button out here so that we can keep it part of the same conceptual group as the quiz question #}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="result text-center"></div>
+        <button class="submit-button btn page_button_style nav-btn">Check Answer</button>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-md-9">
+
+        
+    </div>
+</div> -->
+{% endblock %}
+{% with next_name = quiz_data.next_name, next_page=quiz_data.next_page, prev_page=quiz_data.prev_page, prev_name=quiz_data.prev_name %}
+    {%  include "navigation_button.html" %}
+{% endwith %}

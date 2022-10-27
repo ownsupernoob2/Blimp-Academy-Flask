@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz_landing.js') }}"></script>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="text-group">
+            <h1 class="text-center">Quiz Score</h1>
+        </div>
+        
+        
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="result_font text-center rounded-circle score-circle">
+        <!-- <p></p><br> -->
+        <p><b>{{ data.correct }}/{{ data.total_questions }}</b></p>
+    </div>
+</div>
+<div class="row p-3 justify-content-center">
+    <div class="quiz-qubert">
+        {% if data.correct/data.total_questions >= 0.7 %}
+        <img class="quiz-qubert" src="{{ url_for('static', filename = 'images/qubert/qubert_happy.png') }}">
+        {% elif data.correct/data.total_questions < 0.5 %}
+        <img class="quiz-qubert" src="{{ url_for('static', filename = 'images/qubert/qubert_sad.png') }}">
+        {% else %}
+        <img class="quiz-qubert" src="{{ url_for('static', filename = 'images/qubert/qubert_basic.png') }}">
+        {% endif %}
+    </div>
+    
+</div>
+<div class="row justify-content-center">
+
+    <button id="review-bloch-button" onclick="location.href='/learn/1'" class="btn review-btn page_button_style">Review: Qubits</button>
+    <button id="review-gates-button" onclick="location.href='/learn/3'" class="btn review-btn page_button_style">Review: Programming a Qubit</button>
+    <button id="review-gates-button" onclick="location.href='/learn/7'" class="btn review-btn page_button_style">Review: Sandbox</button>
+
+
+
+</div>
+<div class="row p-4 align-content-center">
+    <div class="col-md-12 text-center">
+    {% if data.prev_page is not none %}
+                    
+        <button id="prev-button" onclick="location.href='{{data.prev_page}}'" class="btn nav-btn page_button_style big-btn">{{data.prev_name}}</button>
+    
+    {% endif %}
+    </div>
+    
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-6">
+                <!--<button id="quiz-next-button" onclick="location.href='{{data.next_page}}'" class="btn nav-btn quiz-next-button page_button_style float-right">{{data.next_name}}</button>-->
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+
+
+

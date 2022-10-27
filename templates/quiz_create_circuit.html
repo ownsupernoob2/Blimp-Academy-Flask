@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/main.css">
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz_circuit_draw.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        console.log({{quiz_data | tojson}})
+        setup_page_circuit_quiz({{ quiz_data | tojson }})
+    })
+</script>
+
+<progress class="progress" max="1" value="{{ quiz_data.progression }}"></progress>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-group">
+            <h1>{{ quiz_data.name }}</h1>
+        </div>
+
+        {% if quiz_data.name_media %}
+            <img src="/{{ quiz_data.name_media }}" class="bloch_sphere_style">
+
+
+        {%  endif %}
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="circuit-quiz-media-group">
+            {% if quiz_data.interactive_sphere %}
+            {% include "learn_circuit.html" %}
+            {%  else %}
+            <div class="tray-container"></div>
+
+            {%  include "circuit.html" %}
+            {%  endif %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="result"></div>
+        <button class="submit-button btn nav-btn page_button_style">Check Answer</button>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-md-4">
+        
+    </div>
+</div> -->
+{% endblock %}
+{% with next_name = quiz_data.next_name, next_page=quiz_data.next_page, prev_page=quiz_data.prev_page, prev_name=quiz_data.prev_name %}
+    {%  include "navigation_button.html" %}
+{% endwith %}

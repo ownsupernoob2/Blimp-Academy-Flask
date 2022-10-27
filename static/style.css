@@ -1,0 +1,248 @@
+.circuit-container {
+    width: 90%;
+    height: 75px;
+    position: relative;
+    margin: 30px;
+}
+
+.tiny-circuit-container {
+    height: 32px;
+    margin: 15px;
+}
+
+.gate {
+    width: 75px;
+    height: 75px;
+    background: lightgray;
+    text-align: center;
+    line-height: 75px;
+    font-size: 32px;
+    font-family: Sans-Serif;
+    display: inline-block;
+}
+
+.gate-outline {
+    border-style: dotted;
+    width: 75px;
+    height: 75px;
+    float: left;
+}
+
+ul {
+    list-style: outside none none;
+
+}
+
+.tray-gate {
+    margin: 10px;
+    color: black;
+}
+
+.circuit-gate {
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+    color: black;
+}
+
+.trash {
+    width: 75px;
+    height: 75px;
+    font-size: 50px;
+    text-align: center;
+    vertical-align: -20%;
+    line-height: 50px;
+    display: inline-block;
+    margin: 10px;
+    color: gray;
+}
+
+.measure {
+    position: absolute;
+    right: 0px;
+    width: 75px;
+    height: 75px;
+}
+
+.tiny-measure {
+    width: 32px;
+    height: 32px;
+}
+
+.gate-slots {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.gate-slot {
+    width: 75px;
+    height: 75px;
+    left: 25px;
+    background: gray;
+}
+
+.tiny-gate {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+}
+
+.tiny-circuit-line {
+    height: 1px;
+}
+
+.circuit-line {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    opacity: 0.7;
+    background: black;
+    z-index: -9;
+}
+
+.answers-img{
+    height: 100%;
+    width: 200px;
+}
+
+.ckt-choice{
+    width: 100%;
+}
+
+.instruction{
+    font-weight: bold;
+}
+
+.progress {
+    width: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.home-choice {
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+#home-circuit {
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-header {
+    padding: 5%;
+}
+
+.home-link {
+    text-decoration: none;
+    color: black;
+}
+
+.home-link:hover{
+    /*text-decoration: none;*/
+    color: black;
+}
+
+
+a.home-link-disabled {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}
+
+start_button {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+a.home-link-disabled:hover {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}
+
+
+.progress::-webkit-progress-value {
+    background: #d84289
+}
+
+.progress::-moz-progress-bar {
+    background: #d84289
+}
+
+.neg-feedback {
+    color: red;
+}
+
+
+/* If you change the color in pos-feedback, please also change it the border-color .right-answer */
+.pos-feedback{
+    color: blue;
+}
+
+.wrong-answer{
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 24px;
+}
+
+/* If you change the border-color in .right-answer, please also change the color in .pos-feedback */
+.right-answer{
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 24px;
+}
+
+.quiz-choice-div {
+    margin: 2%;
+    padding: 2%;
+}
+
+.text-group {
+    margin-top: 2%;
+}
+
+.media-group {
+    margin-top: 5%
+}
+
+.circuit-quiz-media-group {
+    margin-top: 10%;
+}
+
+.multiple-choice-quiz-media-group {
+    margin-top: 2%
+}
+
+.qubert-tiny {
+    width: 20%
+}
+
+.section-done{
+    text-align: right;
+    display: block;
+    position: absolute;
+    float: right;
+}

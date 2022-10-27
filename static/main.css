@@ -1,0 +1,109 @@
+.main_header{
+    font: 1rem sans-serif;
+    font-size: 200%;
+    height: 160px;
+    width: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    display: block;
+}
+
+.main_pane{
+    width: auto;
+    margin-bottom: 25px;
+    margin-left: 45px;
+    display: block;
+}
+
+.bloch_sphere_style{
+    max-height: 200px;
+}
+
+.site_background{
+    background-color: #ffdde2
+}
+
+.result_font{
+    font-size: 250%;
+ }
+
+.score-circle{
+    background-color: rgba(187, 185, 185, 0.534);
+    color: #d84289;
+    width: 350px;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    vertical-align: middle;
+}
+
+.page_button_style{
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.review-btn{
+    background-color: rgb(187, 185, 185);
+    color:white;
+}
+
+.review-btn:hover{
+    background-color: rgb(116, 116, 116);
+    color:white;
+}
+
+.nav-btn{
+    background-color: #f166a7;
+    color: white;
+}
+
+.nav-btn:disabled{
+    background-color: #f166a7;
+    color: white;
+}
+
+.nav-btn:hover:enabled{
+    background-color: #d84289;
+    color: white;
+}
+
+.nav-btn:hover:disabled{
+    color: white;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.big-btn{
+    font-size: xx-large;
+}
+
+.quiz-qubert{
+    height: 350px;
+}
+
+figure{
+    text-align: center;
+}
+
+figure figcaption {
+    text-align: center;
+    font-weight: bold;
+}
+

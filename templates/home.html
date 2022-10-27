@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        console.log("yoyoo")
+        console.log({{home_data | tojson}})
+        setup_page({{home_data | tojson}})
+    })
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-group">
+            <h1>{{ home_data.title }}</h1>
+            <p>{{ home_data.text }}</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+            <div class="home-choice">
+                <a id="home-qubits-link" class="home-link" href="/learn/1">
+                <div><button id="home-next-button" onclick="location.href='/learn/1'" class="btn btn-primary page_button_style">Start</button></div>
+                </a>
+            </div>
+
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+
+</div>
+{% endblock %}
+

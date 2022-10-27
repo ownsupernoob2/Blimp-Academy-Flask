@@ -1,0 +1,4 @@
+qiskit
+flask
+pydantic
+matplotlib
