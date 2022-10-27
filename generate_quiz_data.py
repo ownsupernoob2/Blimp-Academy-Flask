@@ -12,6 +12,7 @@ from generate_bloch_sphere import generate_bloch_sphere_from_circuit
 
 total_questions = 5
 
+
 def generate_quiz_data():
     # generate bloch sphere for q1
     q1_bloch_spheres = []
@@ -31,7 +32,7 @@ def generate_quiz_data():
 
     q1 = QuizQuestion(
         question_id="1",
-        progression=1/total_questions,
+        progression=1 / total_questions,
         name="What is the state of the qubit after this circuit?",
         name_media=Circuit(
             gates=["X"],
@@ -45,7 +46,6 @@ def generate_quiz_data():
         ),
         next_page="/quiz/2"
     )
-
 
     q2_bloch_sphere = plot_bloch_vector([-1, 0, 0])
     fname = pathlib.Path(f"static/images/q2_media.png")
@@ -70,7 +70,7 @@ def generate_quiz_data():
 
     q2 = QuizQuestion(
         question_id="2",
-        progression=2/total_questions,
+        progression=2 / total_questions,
         name="Which Circuit will produce the following state?",
         name_media=fname,
         media_type="path",
@@ -78,11 +78,10 @@ def generate_quiz_data():
         multiple_choice=MultipleChoices(
             correct="C",
             answers_media=q2_answers,
-            answers_type = "circuit"
+            answers_type="circuit"
         ),
         next_page="/quiz/3"
     )
-
 
     q3_bloch_sphere = plot_bloch_vector([0, 0, 1])
     fname = pathlib.Path(f"static/images/q3_media.png")
@@ -96,7 +95,7 @@ def generate_quiz_data():
 
     q3 = QuizQuestion(
         question_id="3",
-        progression=3/total_questions,
+        progression=3 / total_questions,
         name="What is the probability of measuring a 1 in this state?",
         name_media=fname,
         media_type="path",
@@ -117,7 +116,7 @@ def generate_quiz_data():
 
     q4 = QuizQuestion(
         question_id="4",
-        progression=4/total_questions,
+        progression=4 / total_questions,
         name="Create a circuit that makes this state",
         name_media=fname,
         media_type="path",
@@ -139,7 +138,7 @@ def generate_quiz_data():
     pyplot.close(q5_bloch_sphere)
     q5 = QuizQuestion(
         question_id="5",
-        progression=5/total_questions,
+        progression=5 / total_questions,
         name="Create a circuit that will measure 1 with probability 100%",
         is_circuit_draw=True,
         circuit_draw=CircuitDraw(
@@ -154,7 +153,7 @@ def generate_quiz_data():
         bloch_sphere=fname,
         next_page="/quiz_result"
     )
-    
+
     global questions
     questions = [q1, q2, q3, q4, q5]
 
