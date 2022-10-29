@@ -34,20 +34,16 @@ def generate_learn_data():
     learn1 = LearnData(
         learn_id="1",
         progression=1/total_qubits_pages,
-        alias="Qubits",
-        title="Qubits",
+        alias="Product",
+        title="Product",
         text=[
-            """<b>A quantum bit (qubit) is the quantum analogue of a bit</b>. Just like a bit, a qubit can be
-                0 or 1, but what makes it "quantum" is that it can actually take a state between 0 and 1.""",
-            """We use the Bloch Sphere to represent the state of a qubit. <b>If the arrow is pointing straight up 
-                (at the 0), it is in the 0 state</b>. If it is pointing straight down (at the 1), it is in the 
-                1 state. Somewhere else and it is in between the 0 and 1 state.""",
+            """Please tell me about the product you want to market: """,
         ],
         media=captioned_spheres,
         prev_page="/",
         prev_name="Home",
         next_page="/learn/2",
-        next_name="Next: Measurement"
+        next_name="Next: Seller"
     )
 
     learn2_sphere_coords=[
@@ -67,6 +63,7 @@ def generate_learn_data():
             caption=tup[1]
         ))
     global learn2
+
     learn2 = LearnData(
         learn_id="2",
         progression=2/total_qubits_pages,
