@@ -176,7 +176,6 @@ def update_section_complete(section):
 def display_learn(learn_id=None):
 
     model = learn_data[learn_id]
-
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
     else:

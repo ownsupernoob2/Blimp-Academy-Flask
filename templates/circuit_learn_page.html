@@ -12,7 +12,7 @@
 
 <progress class="progress" max="1" value="{{ learn_data.progression }}"></progress>
 <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-6">
             <div class="text-group">
                 <h1 class="page-title">{{ learn_data.title }}</h1>
                 <br>
@@ -25,10 +25,16 @@
                 <p>{{ p | safe }}</p>
                 {% endfor %}
                 {% endif %}
-                </div>
+            </div>
 
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <div class="text-group">
+                <label for="blogTopic" class="form-label">What topic do you want to get blog ideas on?</label>
+                <input type="text" class="form-control" id="blogTopic" name="blogTopic" placeholder="Enter a blog topic">
+                <p class="learn_text">{{ learn_data.response | safe }}</p>
+            </div>
+        </div>
 </div>
 <div class="row">
     <div class="col-md-12">

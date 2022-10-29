@@ -5,10 +5,10 @@ import textwrap as tw
 import re
 from pprint import pprint
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
-def product_observation(prompt):
+def product_observation(prompt_product_desc):
     response = openai.Completion.create(
         model="text-davinci-002",
         # trained responses
