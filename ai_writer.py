@@ -89,3 +89,27 @@ def differentiator(prompt_product_desc, prompt_seller_persona, prompt_focus_segm
     pprint(re.split('\n', response.choices[0].text.strip()))
 
     return response['choices'][0]['text']
+
+def ads1(prompt_product_desc, prompt_seller_persona, prompt_focus_segment, prompt_differentiator, prompt_sale_price):
+    print("Running Segment Selector")
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        # trained responses
+        prompt="The following is a conversation with an AI Customer Segment Recommender. \
+        The AI is playful with words, insightful, witty, clever, has great emphathy, and believes that " + prompt_focus_segment +\
+          "would be highly satisfied when they buy" + prompt_product_desc + "from " + prompt_seller_persona + \
+          "which is known for " \
+          + prompt_differentiator + \
+          "at the price of " \
+          + prompt_sale_price + ". "\
+          + "Write a compelling advertisement for this product. ",
+        temperature=0.9,
+        max_tokens=150,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0.6
+    )
+
+    pprint(re.split('\n', response.choices[0].text.strip()))
+
+    return response['choices'][0]['text']

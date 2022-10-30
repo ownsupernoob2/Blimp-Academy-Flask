@@ -82,7 +82,7 @@ def generate_learn_data():
         response_title="",
         text=[],
         question=[
-            """<label for =\"sellerInfo\" class =\"form-label\">  <b>RecoBot:</b> <b>Recobot:</b> Interesting! Now, tell me some more details about the seller of the product. </label>""",
+            """<label for =\"sellerInfo\" class =\"form-label\">  <b>RecoBot:</b> Interesting! Now, tell me some more details about the seller of the product. </label>""",
             """<input type = \"text\" class =\"form-control\" id=\"sellerInfo\" name=\"sellerInfo\" placeholder=\"Enter some key information about you, the seller\" >""",
             """<input type = \"hidden\" name = \"form2\" value = \"form2\">""",
             """<button type = \"submit\" id = \"sellerInfoButton\" class =\"btn btn-primary\" > Tell about the seller </button>""",
@@ -144,6 +144,30 @@ def generate_learn_data():
         next_name="Predict the Price"
     )
 
+    global learn5
+
+    learn5 = LearnData(
+        learn_id="5",
+        progression=5,
+        alias="",
+        title="Generate Advertisement!",
+        response_title="",
+        text=[],
+        question=["""<b>RecoBot:</b> Now I can write you an advertisement! \
+                  I just need to get your desired selling price please.""",
+                  """<input type = \"text\" class =\"form-control\" id=\"salePrice\" name=\"salePrice\" placeholder=\"Enter the your desire product price\" >""",
+                  """<input type = \"hidden\" name = \"form5\" value = \"form5\">""",
+                  """<button type = \"submit\" id = \"salePriceButton\" class =\"btn btn-primary\" > Generate Ads! </button>""",
+
+                  ],
+        response="",
+        media=captioned_spheres,
+        prev_page="/learn/4",
+        prev_name="Previous",
+        next_page="/learn/6",
+        next_name="Refine the Ad"
+    )
+
 
     empty_circuit = QuantumCircuit(1)
     sv = Statevector.from_instruction(empty_circuit)
@@ -157,6 +181,7 @@ def generate_learn_data():
         learn2,
         learn3,
         learn4,
+        learn5,
     ]
 
     learn_data = {

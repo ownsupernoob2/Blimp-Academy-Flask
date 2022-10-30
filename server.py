@@ -181,6 +181,7 @@ def display_learn(learn_id=None):
     global var_seller_info
     global var_focus_segment
     global var_product_differentiator
+    global var_sale_price
 
     if request.method == 'POST':
         if 'form1' in request.form:
@@ -224,8 +225,18 @@ def display_learn(learn_id=None):
 
             model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
             model.response_title = "Product Differentiator"
-            var_product_differentiator
 
+        if 'form5' in request.form:
+            print(request.form)
+            var_sale_price = request.form['salePrice']
+
+            ai_response = ai_writer.ads1(var_product_desc, var_seller_info, var_focus_segment, var_product_differentiator, var_sale_price)
+            print(ai_response)
+
+            model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
+            model.response_title = "Advertisement"
+
+            var_sale_price
 
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
