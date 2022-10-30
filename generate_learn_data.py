@@ -104,10 +104,9 @@ def generate_learn_data():
         title="Picking Your Segment",
         response_title="",
         text=["""Please type in the type of customer you want to sell to :""",
-          """<b>RecoBot:</b> Alright - based on your motives and product, \
-          I’ve produced a list of possible customers! Here it is:""", learn2.response ],
+              ],
         question=["""<b>RecoBot:</b> Alright - based on your motives and product, \
-          I’ve produced a list of possible customers! Here it is:""",
+          Please pick a segment you want to focus on!""",
           """<input type = \"text\" class =\"form-control\" id=\"focusSegment\" name=\"focusSegment\" placeholder=\"Enter the desired focus segment\" >""",
           """<input type = \"hidden\" name = \"form3\" value = \"form3\">""",
           """<button type = \"submit\" id = \"focusSegmentButton\" class =\"btn btn-primary\" > Select Focus Segment     </button>""",
@@ -115,11 +114,37 @@ def generate_learn_data():
         ],
         response="",
         media=captioned_spheres,
-        prev_page="/learn/1",
+        prev_page="/learn/2",
         prev_name="Previous",
-        next_page="/learn/3",
-        next_name="Picking Your Segment"
+        next_page="/learn/4",
+        next_name="Picking Your Differentiator"
     )
+
+    global learn4
+
+    learn4 = LearnData(
+        learn_id="4",
+        progression=4,
+        alias="",
+        title="Picking Your Differentiator",
+        response_title="",
+        text=[ ],
+        question=["""<b>RecoBot:</b> Now let's learn about what makes your product unique. \
+              Please elaborate!""",
+                  """<input type = \"text\" class =\"form-control\" id=\"productDifferentiator\" name=\"productDifferentiator\" placeholder=\"Enter the your product differentiator\" >""",
+                  """<input type = \"hidden\" name = \"form4\" value = \"form4\">""",
+                  """<button type = \"submit\" id = \"productDifferentiatorButton\" class =\"btn btn-primary\" > Predict the Price </button>""",
+
+                  ],
+        response="",
+        media=captioned_spheres,
+        prev_page="/learn/3",
+        prev_name="Previous",
+        next_page="/learn/5",
+        next_name="Predict the Price"
+    )
+
+
     empty_circuit = QuantumCircuit(1)
     sv = Statevector.from_instruction(empty_circuit)
     bloch_sphere_0 = plot_bloch_multivector(sv)
@@ -131,6 +156,7 @@ def generate_learn_data():
         learn1,
         learn2,
         learn3,
+        learn4,
     ]
 
     learn_data = {

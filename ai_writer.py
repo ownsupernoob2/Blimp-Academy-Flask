@@ -69,3 +69,23 @@ def segment_selector(prompt_product_desc, prompt_seller_persona, prompt_focus_se
     pprint(re.split('\n', response.choices[0].text.strip()))
 
     return response['choices'][0]['text']
+
+def differentiator(prompt_product_desc, prompt_seller_persona, prompt_focus_segment, prompt_differentiator):
+    print("Running Segment Selector")
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        # trained responses
+        prompt="The following is a conversation with an AI Customer Segment Recommender. \
+        The AI is insightful, verbose, and wise, and cares a lot about finding the product market fit.  \
+        Suggest a minimum and maximum range of annual spend for a " + prompt_product_desc + "that offers " + prompt_differentiator + \
+        "targeting " + prompt_focus_segment +".",
+        temperature=0.9,
+        max_tokens=150,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0.6
+    )
+
+    pprint(re.split('\n', response.choices[0].text.strip()))
+
+    return response['choices'][0]['text']
