@@ -3,6 +3,7 @@ from flask import render_template
 from flask import Response, request, jsonify
 import json
 import copy
+import ai_writer
 
 from matplotlib import pyplot
 from qiskit.quantum_info import Statevector
@@ -179,9 +180,12 @@ def display_learn(learn_id=None):
     if request.method == 'POST':
         print(request.form.keys())
         if 'form1' in request.form:
-            prompt = request.form['blogTopic']
-            blogT = ai_writer.product_observation(prompt)
-            blogTopicIdeas = blogT.replace('\n', '<br>')
+            print(request.form)
+            prompt = request.form['productIdea']
+            print(prompt)
+            ai_response = ai_writer.product_observation(prompt)
+            print(ai_response)
+            blogTopicIdeas = ai_response.replace('\n', '<br>')
 
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))

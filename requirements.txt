@@ -2,3 +2,5 @@ qiskit
 flask
 pydantic
 matplotlib
+openai
+config
