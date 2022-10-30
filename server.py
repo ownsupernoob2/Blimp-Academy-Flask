@@ -179,7 +179,7 @@ def display_learn(learn_id=None):
     model = learn_data[learn_id]
     global var_product_desc
     global var_seller_info
-
+    global var_focus_segment
 
     if request.method == 'POST':
         if 'form1' in request.form:
@@ -204,6 +204,15 @@ def display_learn(learn_id=None):
             model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
             model.response_title = "My Understanding About Your Product"
 
+        if 'form3' in request.form:
+            print(request.form)
+            var_focus_segment = request.form['focusSegment']
+
+            ai_response = ai_writer.segment_selector(var_product_desc, var_seller_info, var_focus_segment)
+            print(ai_response)
+
+            model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
+            model.response_title = "Focus Segment Insight"
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
     else:

@@ -33,7 +33,7 @@ def generate_learn_data():
     global learn1
     learn1 = LearnData(
         learn_id="1",
-        progression=1/total_qubits_pages,
+        progression=1,
         alias="Product",
         title="Product",
         response_title="",
@@ -76,8 +76,8 @@ def generate_learn_data():
 
     learn2 = LearnData(
         learn_id="2",
-        progression=2/total_qubits_pages,
-        alias="Bloch Sphere",
+        progression=2,
+        alias="",
         title="More About the Seller",
         response_title="",
         text=[],
@@ -99,20 +99,19 @@ def generate_learn_data():
 
     learn3 = LearnData(
         learn_id="3",
-        progression=2/total_qubits_pages,
-        alias="Bloch Sphere",
-        title="More About the Seller",
+        progression=3,
+        alias="",
+        title="Picking Your Segment",
         response_title="",
-        text=["""<b>Measuring a qubit is the quantum analogue of reading a bit</b>. 
-            If we measure a qubit in the 0 state, 
-            then we will get 0, with probability 100%. Similarly, if we measure a qubit in the 1 state, 
-            then we will get 1, with probability 100%. This is the same as a classical bit. """,
-          """On the other hand, <b>if we measure a qubit that is between 0 and 1, we will get a 0 or 1 with probability 
-          proportional to where the arrow is pointing</b>. For example, if the arrow is pointing at the equator,
-          then the probability of measuring a 0 is 50%""", ],
-        question=[
-            "<b>Recobot:</b> Interesting! Tell me some more details about the seller of the product. The seller is:"
-            #"<label for =\"blogTopic\" class =\"form-label\"> What topic do you want to get blog ideas on? </label>"
+        text=["""Please type in the type of customer you want to sell to :""",
+          """<b>RecoBot:</b> Alright - based on your motives and product, \
+          I’ve produced a list of possible customers! Here it is:""", learn2.response ],
+        question=["""<b>RecoBot:</b> Alright - based on your motives and product, \
+          I’ve produced a list of possible customers! Here it is:""",
+          """<input type = \"text\" class =\"form-control\" id=\"focusSegment\" name=\"focusSegment\" placeholder=\"Enter the desired focus segment\" >""",
+          """<input type = \"hidden\" name = \"form3\" value = \"form3\">""",
+          """<button type = \"submit\" id = \"focusSegmentButton\" class =\"btn btn-primary\" > Select Focus Segment     </button>""",
+
         ],
         response="",
         media=captioned_spheres,
