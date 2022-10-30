@@ -41,6 +41,8 @@ def generate_learn_data():
             """Please tell me about the product you want to market: """,
         ],
         question=[
+            """<b>RecoBot:</b> Hi there, nice to meet you! I understand your need to get your startup off the ground, and I’d be happy to help!""",
+            """<b>RecoBot:</b> First, though, I’ll probably have to gather some information about the ideas you have for your new company. What product are you planning to sell?""",
             """<label for =\"blogTopic\" class =\"form-label\"> What topic do you want to get blog ideas on? </label>""",
             """<input type = \"text\" class =\"form-control\" id=\"blogSection\" name=\"blogSection\" placeholder=\"Enter the blog title to generate blog sections on\" >""",
             """<input type = \"hidden\" name = \"form1\" value = \"form1\">""",
