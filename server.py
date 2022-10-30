@@ -4,6 +4,7 @@ from flask import Response, request, jsonify
 import json
 import copy
 import ai_writer
+import re
 
 from matplotlib import pyplot
 from qiskit.quantum_info import Statevector
@@ -185,8 +186,11 @@ def display_learn(learn_id=None):
             print(prompt)
             ai_response = ai_writer.product_observation(prompt)
             print(ai_response)
-            ai_topic = ai_response.replace('\n', '<br>')
-            model.response = ai_topic
+
+            model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
+            model.response_title = "Product Description"
+            #model.response = ai_response.replace('AI:', '<b>RecoBot:</b>')
+            #model.response = ai_response.replace('\n', '<br>')
 
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))

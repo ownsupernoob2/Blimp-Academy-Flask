@@ -36,7 +36,7 @@ def generate_learn_data():
         progression=1/total_qubits_pages,
         alias="Product",
         title="Product",
-        response_title="Product Description",
+        response_title="",
         text=[
             """Please tell me about the product you want to market: """,
         ],
@@ -47,9 +47,7 @@ def generate_learn_data():
             """<input type = \"hidden\" name = \"form1\" value = \"form1\">""",
             """<button type = \"submit\" id = \"productIdeaButton\" class =\"btn btn-primary\" > Submit </button>""",
         ],
-        response=[
-            """THIS IS A DEFAULT RESPONSE """,
-        ],
+        response="",
         media=captioned_spheres,
         prev_page="/",
         prev_name="Home",

@@ -1,1 +1,1 @@
-secret="enter your key here"
+secret="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"
