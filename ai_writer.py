@@ -4,8 +4,9 @@ import config
 import textwrap as tw
 import re
 from pprint import pprint
+import key
 
-openai.api_key = "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"
+openai.api_key = key.secret
 
 
 def product_observation(prompt_product_desc):

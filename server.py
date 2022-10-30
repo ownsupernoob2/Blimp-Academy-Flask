@@ -185,7 +185,8 @@ def display_learn(learn_id=None):
             print(prompt)
             ai_response = ai_writer.product_observation(prompt)
             print(ai_response)
-            blogTopicIdeas = ai_response.replace('\n', '<br>')
+            ai_topic = ai_response.replace('\n', '<br>')
+            model.response = ai_topic
 
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
