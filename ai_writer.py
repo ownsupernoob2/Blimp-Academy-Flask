@@ -8,7 +8,6 @@ import key
 
 openai.api_key = key.secret
 
-
 def product_observation(prompt_product_desc):
     print("Running product observation")
     response = openai.Completion.create(
@@ -103,6 +102,34 @@ def ads1(prompt_product_desc, prompt_seller_persona, prompt_focus_segment, promp
           "at the price of " \
           + prompt_sale_price + ". "\
           + "Write a compelling advertisement for this product. ",
+        temperature=0.9,
+        max_tokens=150,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0.6
+    )
+
+    pprint(re.split('\n', response.choices[0].text.strip()))
+
+    global ads1_copy
+
+    ads1_copy = response['choices'][0]['text']
+    return ads1_copy
+
+def ads2(prompt_product_desc, prompt_seller_persona, prompt_focus_segment, prompt_differentiator, prompt_sale_price, prompt_second_ad):
+    print("Running Second Recommendation")
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        # trained responses
+        prompt="The following is a conversation with an AI Customer Segment Recommender. \
+        The AI is playful with words, insightful, witty, clever, has great emphathy, and believes that " + prompt_focus_segment +\
+          "would be highly satisfied when they buy" + prompt_product_desc + "from " + prompt_seller_persona + \
+          "which is known for " \
+          + prompt_differentiator + \
+          "at the price of " \
+          + prompt_sale_price + ". " \
+            "It wrote this copy. : " + ads1_copy + ", which is good, but it could be improved by " + prompt_second_ad + \
+            "\n. Write an improved compelling advertisement for this product. ",
         temperature=0.9,
         max_tokens=150,
         top_p=1,

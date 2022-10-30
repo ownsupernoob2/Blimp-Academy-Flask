@@ -129,8 +129,7 @@ def generate_learn_data():
         title="Picking Your Differentiator",
         response_title="",
         text=[ ],
-        question=["""<b>RecoBot:</b> Now let's learn about what makes your product unique. \
-              Please elaborate!""",
+        question=["""<b>RecoBot:</b> What is the differentiating feature of your product? What sets your product apart from the competition?""",
                   """<input type = \"text\" class =\"form-control\" id=\"productDifferentiator\" name=\"productDifferentiator\" placeholder=\"Enter the your product differentiator\" >""",
                   """<input type = \"hidden\" name = \"form4\" value = \"form4\">""",
                   """<button type = \"submit\" id = \"productDifferentiatorButton\" class =\"btn btn-primary\" > Predict the Price </button>""",
@@ -168,6 +167,30 @@ def generate_learn_data():
         next_name="Refine the Ad"
     )
 
+    global learn6
+
+    learn6 = LearnData(
+        learn_id="6",
+        progression=6,
+        alias="",
+        title="Regenerate Advertisement!",
+        response_title="",
+        text=[],
+        question=["""<b>RecoBot:</b> What can be improved from the copy? \
+        If you have any feedback, please be as direct as possible!""",
+          """<input type = \"text\" class =\"form-control\" id=\"secondRecommendation\" name=\"secondRecommendation\" placeholder=\"Enter your improvement idea\" >""",
+          """<input type = \"hidden\" name = \"form6\" value = \"form6\">""",
+          """<button type = \"submit\" id = \"secondRecommendationButton\" class =\"btn btn-primary\" > Regenerate Ads! </button>""",
+
+                  ],
+        response="",
+        media=captioned_spheres,
+        prev_page="/learn/5",
+        prev_name="Previous",
+        next_page="/learn/7",
+        next_name="Summary"
+    )
+
 
     empty_circuit = QuantumCircuit(1)
     sv = Statevector.from_instruction(empty_circuit)
@@ -182,6 +205,7 @@ def generate_learn_data():
         learn3,
         learn4,
         learn5,
+        learn6,
     ]
 
     learn_data = {
