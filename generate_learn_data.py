@@ -52,7 +52,7 @@ def generate_learn_data():
         prev_page="/",
         prev_name="Home",
         next_page="/learn/2",
-        next_name="Next: Seller"
+        next_name="Next: About You"
     )
 
     learn2_sphere_coords=[
