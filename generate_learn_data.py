@@ -45,7 +45,7 @@ def generate_learn_data():
             """<label for =\"productIdea\" class =\"form-label\">  <b>RecoBot:</b> First, though, I’ll probably have to gather some information about the ideas you have for your new company. What product are you planning to sell?</label>""",
             """<input type = \"text\" class =\"form-control\" id=\"productIdea\" name=\"productIdea\" placeholder=\"Enter product idea\" >""",
             """<input type = \"hidden\" name = \"form1\" value = \"form1\">""",
-            """<button type = \"submit\" id = \"productIdeaButton\" class =\"btn btn-primary\" > Submit </button>""",
+            """<button type = \"submit\" id = \"productIdeaButton\" class =\"btn btn-primary\" > Tell about the product </button>""",
         ],
         response="",
         media=captioned_spheres,
@@ -71,14 +71,38 @@ def generate_learn_data():
             bloch_sphere=fname,
             caption=tup[1]
         ))
+
     global learn2
 
     learn2 = LearnData(
         learn_id="2",
         progression=2/total_qubits_pages,
         alias="Bloch Sphere",
-        title="Measurement",
-        response_title="Product Description",
+        title="More About the Seller",
+        response_title="",
+        text=[],
+        question=[
+            """<label for =\"sellerInfo\" class =\"form-label\">  <b>RecoBot:</b> <b>Recobot:</b> Interesting! Now, tell me some more details about the seller of the product. </label>""",
+            """<input type = \"text\" class =\"form-control\" id=\"sellerInfo\" name=\"sellerInfo\" placeholder=\"Enter some key information about you, the seller\" >""",
+            """<input type = \"hidden\" name = \"form2\" value = \"form2\">""",
+            """<button type = \"submit\" id = \"sellerInfoButton\" class =\"btn btn-primary\" > Tell about the seller </button>""",
+        ],
+        response="",
+        media=captioned_spheres,
+        prev_page="/learn/1",
+        prev_name="Previous",
+        next_page="/learn/3",
+        next_name="Picking Your Segment"
+    )
+
+    global learn3
+
+    learn3 = LearnData(
+        learn_id="3",
+        progression=2/total_qubits_pages,
+        alias="Bloch Sphere",
+        title="More About the Seller",
+        response_title="",
         text=["""<b>Measuring a qubit is the quantum analogue of reading a bit</b>. 
             If we measure a qubit in the 0 state, 
             then we will get 0, with probability 100%. Similarly, if we measure a qubit in the 1 state, 
@@ -87,19 +111,16 @@ def generate_learn_data():
           proportional to where the arrow is pointing</b>. For example, if the arrow is pointing at the equator,
           then the probability of measuring a 0 is 50%""", ],
         question=[
-            "What topic do you want to get blog ideas on Learn 1?"
+            "<b>Recobot:</b> Interesting! Tell me some more details about the seller of the product. The seller is:"
             #"<label for =\"blogTopic\" class =\"form-label\"> What topic do you want to get blog ideas on? </label>"
         ],
-        response=[
-            """THIS IS A DEFAULT RESPONSE """,
-        ],
+        response="",
         media=captioned_spheres,
         prev_page="/learn/1",
         prev_name="Previous",
-        next_page="/",
-        next_name="Home"
+        next_page="/learn/3",
+        next_name="Picking Your Segment"
     )
-
     empty_circuit = QuantumCircuit(1)
     sv = Statevector.from_instruction(empty_circuit)
     bloch_sphere_0 = plot_bloch_multivector(sv)
@@ -109,7 +130,8 @@ def generate_learn_data():
     global learn_data
     learn_data = [
         learn1,
-        learn2
+        learn2,
+        learn3,
     ]
 
     learn_data = {

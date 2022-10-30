@@ -177,20 +177,32 @@ def update_section_complete(section):
 @app.route("/learn/<learn_id>", methods=["GET", "POST"])
 def display_learn(learn_id=None):
     model = learn_data[learn_id]
+    global var_product_desc
+    global var_seller_info
+
 
     if request.method == 'POST':
-        print(request.form.keys())
         if 'form1' in request.form:
             print(request.form)
-            prompt = request.form['productIdea']
-            print(prompt)
-            ai_response = ai_writer.product_observation(prompt)
+            var_product_desc = request.form['productIdea']
+
+            ai_response = ai_writer.product_observation(var_product_desc)
             print(ai_response)
 
             model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
-            model.response_title = "Product Description"
+            model.response_title = "My Understanding About Your Product"
             #model.response = ai_response.replace('AI:', '<b>RecoBot:</b>')
             #model.response = ai_response.replace('\n', '<br>')
+
+        if 'form2' in request.form:
+            print(request.form)
+            var_seller_info = request.form['sellerInfo']
+
+            ai_response = ai_writer.segment_generator(var_product_desc, var_seller_info)
+            print(ai_response)
+
+            model.response = re.sub(r'^.*?AI:', 'RecoBot:', ai_response)
+            model.response_title = "My Understanding About Your Product"
 
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
