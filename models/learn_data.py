@@ -20,6 +20,7 @@ class LearnData(BaseModel):
     learn_id: str = Field(..., description="The id for this learn page")
     progression: float = Field(..., description="The progression of this page so far")
     title: str = Field(..., description="The title for this learning page")
+    response_title: str = Field(..., description="The Response title for this learning page")
     text: Union[List[str], str] = Field(..., description="The text to learn for this page")
     question: Union[List[str], str] = Field(..., description="The prompt to learn for this page")
     response: Union[List[str], str] = Field(..., description="The text for the AI for this page")

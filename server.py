@@ -176,6 +176,12 @@ def update_section_complete(section):
 def display_learn(learn_id=None):
 
     model = learn_data[learn_id]
+
+    if 'form1' in request.form:
+        prompt = request.form['blogTopic']
+        blogT = ai_writer.product_observation(prompt)
+        blogTopicIdeas = blogT.replace('\n', '<br>')
+
     if isinstance(model.media, list):
         return render_template("bloch_learn_page.html", learn_data=json.loads(model.json()))
     else:

@@ -36,12 +36,15 @@ def generate_learn_data():
         progression=1/total_qubits_pages,
         alias="Product",
         title="Product",
+        response_title="Product Description",
         text=[
             """Please tell me about the product you want to market: """,
         ],
         question=[
-            """What topic do you want to get blog ideas on Learn 1?""",
-            """<label for =\"blogTopic\" class =\"form-label\"> What topic do you want to get blog ideas on? </label>"""
+            """<label for =\"blogTopic\" class =\"form-label\"> What topic do you want to get blog ideas on? </label>""",
+            """<input type = \"text\" class =\"form-control\" id=\"blogSection\" name=\"blogSection\" placeholder=\"Enter the blog title to generate blog sections on\" >""",
+            """<input type = \"hidden\" name = \"form1\" value = \"form1\">""",
+            """<button type = \"submit\" id = \"blogTopicButton\" class =\"btn btn-primary\" > Generate Blog Ideas </button>""",
         ],
         response=[
             """THIS IS A DEFAULT RESPONSE """,
@@ -76,6 +79,7 @@ def generate_learn_data():
         progression=2/total_qubits_pages,
         alias="Bloch Sphere",
         title="Measurement",
+        response_title="Product Description",
         text=["""<b>Measuring a qubit is the quantum analogue of reading a bit</b>. 
             If we measure a qubit in the 0 state, 
             then we will get 0, with probability 100%. Similarly, if we measure a qubit in the 1 state, 

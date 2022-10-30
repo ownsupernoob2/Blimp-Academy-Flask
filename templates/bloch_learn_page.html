@@ -20,15 +20,6 @@
             <div class="text-group">
                 <h1>{{ learn_data.title }}</h1>
                 <br>
-                {% if learn_data.text is string %}
-                <p>{{ learn_data.text | safe }}</p>
-
-                {% else %}
-                {% for t in learn_data.text %}
-                <p>{{ t | safe }}</p>
-                {% endfor %}
-                {% endif %}
-
                 {% if learn_data.question is string %}
                 <p>{{ learn_data.question | safe }}</p>
 
@@ -41,11 +32,10 @@
         </div>
         <div class="col-md-6">
             <div class="text-group">
-                <label for="blogTopic" class="form-label">What topic do you want to get blog ideas on?</label>
-                <input type="text" class="form-control" id="blogTopic" name="blogTopic" placeholder="Enter your product">
-                <input type="hidden" name="form2" value="form2">
-                <button type="submit" class="btn btn-primary">Generate Production Description</button>
-                <p class="learn_text">{{ learn_data.response | safe }}</p>
+                <h1>{{ learn_data.response_title }}</h1>
+                <br>
+
+                {{blogTopicIdeas|safe}}
             </div>
         </div>
 </div>
@@ -55,10 +45,10 @@
             <div class="row">
                 {% for img in learn_data.media %}
                 <div class="col-md-4">
-                <figure>
+                <!--<figure>
                   <img class="bloch_sphere_style" src="{{ url_for('home') + img.bloch_sphere }}">
                   <figcaption>{{ img.caption }}</figcaption>
-                </figure>
+                </figure>-->
 
                 </div>
                 {% endfor %}
